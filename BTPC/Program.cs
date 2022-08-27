@@ -1,22 +1,18 @@
-﻿using System.Net;
-using System.Net.Sockets;
-using System.Text;
-using Shared;
+﻿using Shared;
+using System.Net;
 
+string fileName = @"c:\temp\demo\domain.csv";
 IPAddress addr = IPAddress.Parse("192.168.1.200");
+Client client = new Client();
+MD5 md5 = new MD5();    
 
-Console.ReadLine();
-Console.WriteLine("Backup Transfer Protocol Client");
-TcpClient tcpClient = new TcpClient();
-tcpClient.Connect(addr, 47440);
-
-
-
-int byteCount = Encoding.ASCII.GetByteCount("Helloe");
-byte[] sendData = new byte[byteCount];
-
-NetworkStream stream = tcpClient.GetStream();
-stream.Write(sendData, 0, sendData.Length);
-stream.Close();
-tcpClient.Close();
+System.IO.FileInfo fi = new FileInfo(fileName);
+UploadFile uploadFile = new();
+uploadFile.FileLength = (int)fi.Length;
+uploadFile.FileName = fileName;
+uploadFile.RelativePath = false;
+uploadFile.Checksum = md5.Checksum(fileName);
+uploadFile.ComputerName = "WINDOWS11";
+client.StartClient(uploadFile);
+string test = "";
 
