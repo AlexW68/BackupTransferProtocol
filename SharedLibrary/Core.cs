@@ -1,15 +1,9 @@
-﻿using System;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Net.Sockets;
+﻿using System.Net.Sockets;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace Shared
-{
-    public sealed class Core
+namespace Shared {
+	public sealed class Core
     {
         public string STOR_COMMAND = "STOR";
         public string VOL_LABEL = "BK*";

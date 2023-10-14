@@ -32,7 +32,7 @@ namespace Shared
         {
             IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
             Console.WriteLine(ipHostInfo.HostName);
-            IPAddress addr = IPAddress.Parse("192.168.1.200");
+            IPAddress addr = IPAddress.Parse("192.168.1.11");
             IPEndPoint localEndPoint = new IPEndPoint(addr, _port);
             listener = new Socket(addr.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
             try

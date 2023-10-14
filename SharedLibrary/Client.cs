@@ -35,7 +35,7 @@ namespace Shared
         {
             try
             {
-                IPAddress addr = IPAddress.Parse("192.168.1.200");
+                IPAddress addr = IPAddress.Parse("192.168.1.11");
                 IPEndPoint remoteEP = new IPEndPoint(addr, port);
                 Socket client = new Socket(addr.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
                 client.SendTimeout = 1000000;
