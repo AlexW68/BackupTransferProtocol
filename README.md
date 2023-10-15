@@ -16,6 +16,8 @@ So even if you get attacked and your files are modified, the next copy will only
 
 This is a very basic system, there is a lot of room for improvement, but an old PC with a large hard drive sitting on the network could make a difference if the network is attacked.
 
+Reducing the attack surface is really important, which is why there is no restore or listing functionality, you have bigger issues at the point of an attack than easy access to file, the fact you have the files is what is important.
+
 
 
 
