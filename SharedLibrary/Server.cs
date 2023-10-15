@@ -31,8 +31,17 @@ namespace Shared
         public void StartListening()
         {
             IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
-            Console.WriteLine(ipHostInfo.HostName);
-            IPAddress addr = IPAddress.Parse("192.168.1.11");
+            Console.WriteLine("Server: " + ipHostInfo.HostName);
+			string hostName = Dns.GetHostName();
+			string myIP = "";
+			foreach(IPAddress ip in Dns.GetHostEntry(hostName).AddressList)
+			{
+				if (ip.AddressFamily == AddressFamily.InterNetwork) {
+					myIP = ip.ToString();	
+				}
+			}
+//			string myIP = Dns.GetHostByName(hostName).AddressList[0].ToString();
+			IPAddress addr = IPAddress.Parse(myIP);
             IPEndPoint localEndPoint = new IPEndPoint(addr, _port);
             listener = new Socket(addr.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
             try
@@ -43,7 +52,7 @@ namespace Shared
                 while (true)
                 {
                     allDone.Reset();
-                    Console.WriteLine("Waiting for a connection...");
+                    Console.WriteLine("Waiting for a connection on [" + myIP + "/" + _port.ToString() + "]");
                     listener.BeginAccept(new AsyncCallback(AcceptCallback), listener);
                     allDone.WaitOne();
                 }

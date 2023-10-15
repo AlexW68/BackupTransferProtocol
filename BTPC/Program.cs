@@ -18,5 +18,5 @@ uploadFile.RelativePath = false;
 uploadFile.Checksum = md5.Checksum(fileName);
 //uploadFile.ComputerName = "WebServer";
 uploadFile.ComputerName = System.Environment.MachineName;
-client.StartClient(uploadFile);
+client.StartClient(uploadFile, ipAddress);
 

@@ -1,13 +1,4 @@
-﻿using System.Net;
-using System.Net.Sockets;
-using System.Text;
-using Shared;
-
-Console.WriteLine("Backup Transfer Protocol Server");
-
-List<DriveInfo> list = Core.Instance.LoadDrives();
-
+﻿using Shared;
+Console.WriteLine("Backup Transfer Protocol Server Version 1.0");
 Server server = new Server(Core.Instance.BTP_PORT);
 server.StartListening();
-
-Console.WriteLine("dfddfd");
