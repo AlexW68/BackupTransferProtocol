@@ -24,7 +24,7 @@ namespace Shared {
 
 		private static String response = String.Empty;
 
-		public void StartClient(UploadFile uploadFile, string ipAddress) {
+		public void StartClient(UploadFile uploadFile, string ipAddress, bool verbose) {
 			try {
 				IPAddress addr = IPAddress.Parse(ipAddress);
 				IPEndPoint remoteEP = new IPEndPoint(addr, port);
@@ -33,6 +33,9 @@ namespace Shared {
 
 				client.BeginConnect(remoteEP, new AsyncCallback(ConnectCallback), client);
 				connectDone.WaitOne();
+				if (verbose == true) {
+					Console.WriteLine("Connected to BTPS on {0}", client.RemoteEndPoint.ToString());
+				}
 				string data = Core.Instance.WritePacket(uploadFile);
 				Send(client, data);
 				sendDone.WaitOne();

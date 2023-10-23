@@ -23,4 +23,4 @@ uploadFile.FileName = fileName;
 uploadFile.RelativePath = false;
 uploadFile.Checksum = md5.Checksum(fileName);
 uploadFile.ComputerName = System.Environment.MachineName;
-client.StartClient(uploadFile, ipAddress);
+client.StartClient(uploadFile, ipAddress, true);
